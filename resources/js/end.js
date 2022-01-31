@@ -35,6 +35,6 @@ function loadEndHtml() {
     }
     loadFinalScore(); 
     restart.addEventListener('click', function(){
-        loadIndexHtml();
+        loadLandingHtml();
     });
 }
