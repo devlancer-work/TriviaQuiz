@@ -35,6 +35,11 @@
     box-shadow: none;
 }
 
+.goUP {
+    top: -30%;
+    transition: top 1s ease;
+}
+
 
 /* Media Queries */
 
