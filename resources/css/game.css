@@ -204,7 +204,7 @@
     }
 }
 @media screen and (max-width: 990px){
-    .container {
+    .game-container {
         height: auto;
     }
     .lower_container {
