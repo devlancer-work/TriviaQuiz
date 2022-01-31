@@ -7,7 +7,7 @@
     background-color: var(--white);
     border-radius: 0.8rem;
     position: absolute;
-    top: 50%;
+    top: -30%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 1rem 0.8rem 0.4rem rgba(0,0,0,.15);
@@ -35,10 +35,7 @@
     box-shadow: none;
 }
 
-.goUP {
-    top: -30%;
-    transition: top 1s ease;
-}
+
 
 
 /* Media Queries */

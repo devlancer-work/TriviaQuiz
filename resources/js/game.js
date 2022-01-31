@@ -9,6 +9,7 @@ const questionContainer = document.querySelector(".question_container");
 const progressBar = document.querySelector(".progress-bar");
 const scoreOverlay = document.querySelector(".score-overlay");
 const loader = document.getElementById('loader');
+const questionNumber = document.querySelector('.question-number');
 
 
   let score = 0;
@@ -72,6 +73,9 @@ const loader = document.getElementById('loader');
     currentQuestion = availableQuestions[randomNum];
     availableQuestions.splice(randomNum, 1);
 
+    // Show number
+    questionNumber.textContent = `Question - ${questionCounter}/${totalQuestions}`;
+
     // Show Question
     questionContainer.innerHTML = `<p id="question">${currentQuestion.question}</p>`;
 
@@ -108,15 +112,20 @@ const loader = document.getElementById('loader');
       if (selectedVal - 1 == currentQuestion.answer) {
         // console.log('Matched');
         score += marksForCorrect;
+        option.classList.add("correct");
+        pointerNone();
+
+
+
+        setTimeout(() => {
         // show score
         mainScore.textContent = score;
         scoreOverlay.style.background = `conic-gradient(
-                    var(--white) ${score}%,
-                    var(--primary-blue) ${score}%
-                )`;
+                var(--white) ${score}%,
+                var(--primary-blue) ${score}%
+            )`;
+        }, 300);
 
-        option.classList.add("correct");
-        pointerNone();
         setTimeout(() => {
           option.classList.remove("correct");
           getNewQuestion();

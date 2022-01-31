@@ -21,6 +21,8 @@ function loadEndHtml() {
     const mainScore = document.getElementById('end__score');
     const scoreOverlay = document.querySelector('.end__score-overlay');
     const restart = document.querySelector(".restart");
+    const endMain = document.querySelector('.end-main');
+
   
   
     function loadFinalScore() {
@@ -32,9 +34,19 @@ function loadEndHtml() {
           var(--secondary-blue) ${finalScore}%,
           var(--primary-blue) ${finalScore}%
       )`;
+
+        setTimeout(() => {
+            endMain.classList.add('goDOWN');
+        }, 400);
+
     }
     loadFinalScore(); 
     restart.addEventListener('click', function(){
-        loadLandingHtml();
+        endMain.classList.remove('goDOWN');
+        endMain.classList.add('goUP');
+
+        setTimeout(() => {
+            loadLandingHtml();
+        }, 400);
     });
 }

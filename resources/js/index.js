@@ -9,8 +9,19 @@ function loadLandingHtml(){
         if(this.readyState = 200){
             let res = this.responseText;
             // console.log(res);
+            const modal = document.getElementById('modal');
             document.getElementById('main-data').innerHTML = res;
-            loadGameSnippet();
+
+            if(modal.classList.contains('hidden')){
+                return loadGameSnippet();
+            }
+            
+            document.querySelector('.close-modal').addEventListener('click', function(){
+
+                modal.classList.add('hidden');
+                loadGameSnippet();
+
+            });
             
         }else {
             console.log("Landing Html - Error")
@@ -23,7 +34,12 @@ function loadLandingHtml(){
 function loadGameSnippet(){
     const start = document.querySelector('.start-btn');
     const mainContent = document.querySelector('.main-content');
+    const indexMain = document.querySelector('.index-main');
 
+    setTimeout(() => {
+        indexMain.classList.add('goDOWN');
+        
+    }, 400);
 
     start.addEventListener('click', function(){
         let gamefetch = new XMLHttpRequest();
@@ -32,12 +48,13 @@ function loadGameSnippet(){
             if(this.readyState = 200){
                 let gameRes = this.responseText;
                 // console.log(gameRes);
-
-                document.getElementById('main-data').innerHTML = gameRes;
+                indexMain.classList.remove('goDOWN');
+                indexMain.classList.add('goUP');
                 setTimeout(() => {
-                LoadGameHtml();  
+                    document.getElementById('main-data').innerHTML = gameRes;
+                    LoadGameHtml();  
                             
-                }, 500);
+                }, 400);
 
             }else {
                 console.log('Game Fetch - Error');
